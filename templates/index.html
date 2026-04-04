@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SafeMind</title>
+<link rel="stylesheet" href="/static/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="title">SafeMind</div>
+        <div class="subtitle">A safe space for your thoughts 💙</div>
+    </div>
+
+    <!-- CHAT -->
+    <div id="chat" class="chat"></div>
+
+    <!-- HELP BUTTON -->
+    <div class="help">
+        <button onclick="openHelp()">Talk to a Professional</button>
+    </div>
+
+    <!-- INPUT -->
+    <div class="input-area">
+        <input id="input" placeholder="Share what's on your mind..." />
+        <button onclick="send()">➤</button>
+    </div>
+
+</div>
+
+<script>
+
+// ENTER KEY FIX
+document.getElementById("input").addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+        send();
+    }
+});
+
+// SEND MESSAGE
+async function send(){
+
+    let input = document.getElementById("input");
+    let text = input.value.trim();
+
+    if(!text) return;
+
+    let chat = document.getElementById("chat");
+
+    chat.innerHTML += `
+        <div class="msg user">
+            <div class="bubble">${text}</div>
+        </div>
+    `;
+
+    input.value = "";
+
+    // typing animation
+    chat.innerHTML += `
+        <div class="msg bot typing" id="typing">
+            <div class="bubble">Typing...</div>
+        </div>
+    `;
+
+    let res = await fetch("/chat",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({message:text})
+    });
+
+    let data = await res.json();
+
+    document.getElementById("typing").remove();
+
+    chat.innerHTML += `
+        <div class="msg bot">
+            <div class="bubble">${data.reply}</div>
+        </div>
+    `;
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+// 🔥 FIXED HELP BUTTON
+function openHelp(){
+    window.open("https://icallhelpline.org/", "_blank");
+}
+
+</script>
+
+</body>
+</html>

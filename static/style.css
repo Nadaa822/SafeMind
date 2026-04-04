@@ -1,0 +1,122 @@
+body{
+    margin:0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg,#eef2f3,#e6ecf0);
+}
+
+.app{
+    width:420px;
+    height:680px;
+    margin:30px auto;
+    background:white;
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 20px 60px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+/* HEADER */
+.header{
+    padding:20px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+}
+
+.title{
+    font-weight:600;
+    font-size:18px;
+}
+
+.subtitle{
+    font-size:13px;
+    color:#888;
+}
+
+/* CHAT */
+.chat{
+    flex:1;
+    padding:15px;
+    overflow-y:auto;
+    background:#fafafa;
+}
+
+/* MESSAGE STRUCTURE */
+.msg{
+    display:flex;
+    margin:10px 0;
+}
+
+.msg.user{
+    justify-content:flex-end;
+}
+
+.msg.bot{
+    justify-content:flex-start;
+}
+
+/* BUBBLES */
+.bubble{
+    padding:12px 16px;
+    border-radius:16px;
+    max-width:75%;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* USER STYLE */
+.user .bubble{
+    background:#3f64fa;
+    color:white;
+    border-bottom-right-radius:4px;
+}
+
+/* BOT STYLE */
+.bot .bubble{
+    background:#ffffff;
+    border:1px solid #eee;
+    border-bottom-left-radius:4px;
+}
+
+/* INPUT */
+.input-area{
+    display:flex;
+    padding:15px;
+    border-top:1px solid #eee;
+    background:white;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    outline:none;
+}
+
+button{
+    margin-left:10px;
+    padding:12px 14px;
+    border:none;
+    border-radius:10px;
+    background:#1e48f1;
+    color:white;
+    cursor:pointer;
+}
+
+/* HELP BUTTON */
+.help{
+    padding:10px;
+    border-top:1px solid #eee;
+    background:#fff;
+}
+
+.help button{
+    width:100%;
+    padding:10px;
+    background:#df2626;
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+}
