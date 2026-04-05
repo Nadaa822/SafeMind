@@ -2,8 +2,7 @@
 <html>
 <head>
 <title>SafeMind</title>
-<link rel="stylesheet" href="/static/style.css">
-
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
@@ -30,7 +29,7 @@
         <input id="input" placeholder="Share what's on your mind..." />
         <button onclick="send()">➤</button>
     </div>
-
+    
 </div>
 
 <script>
@@ -90,7 +89,6 @@ async function send(){
 function openHelp(){
     window.open("https://icallhelpline.org/", "_blank");
 }
-
 </script>
 
 </body>
