@@ -1,12 +1,43 @@
-body{
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* body {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #b3e8fb, #c3cfdf);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  } */
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.11), rgba(255,255,255,0.11)), /* overlay */
+        url('/static/doodle.png'),
+        linear-gradient(to bottom, #ffffff, #eef4ff);
+
+    background-size:
+        cover,   /* overlay */
+        260px,   /* doodle (slightly bigger = more visible) */
+        cover;
+
+    background-repeat:
+        no-repeat,
+        repeat,
+        no-repeat;
+
+    background-attachment: fixed;
+}
+/* body{
     margin:0;
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg,#eef2f3,#e6ecf0);
-}
-
+    background: linear-gradient(135deg, #b1cef8, #f1f7ff);
+} */
 .app{
-    width:420px;
-    height:680px;
+    width: 700px;
+    height: 680px;
     margin:30px auto;
     background:white;
     border-radius:20px;
@@ -14,6 +45,7 @@ body{
     flex-direction:column;
     box-shadow:0 20px 60px rgba(0,0,0,0.1);
     overflow:hidden;
+    backdrop-filter: blur(10px);
 }
 
 /* HEADER */
@@ -34,13 +66,37 @@ body{
 }
 
 /* CHAT */
-.chat{
+/* .chat{
     flex:1;
     padding:15px;
     overflow-y:auto;
-    background:#fafafa;
-}
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.08);
+    border: 1px solid #E3E8EE;
+} */
+.chat {
+    flex:1;
+    padding: 0px 18px 18px 18px;
+    overflow-y:auto;
 
+    background: linear-gradient(180deg, #ffffff, #f7faff);
+    border-radius: 20px;
+
+    box-shadow: 
+        inset 0 1px 2px rgba(255,255,255,0.6),
+        0 10px 30px rgba(74, 144, 226, 0.08);
+
+    border: 1px solid #E3E8EE;
+}
+.chat::before {
+    content: "";
+    display: block;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
+    position: sticky;
+    top: 0;
+}
 /* MESSAGE STRUCTURE */
 .msg{
     display:flex;
@@ -56,26 +112,44 @@ body{
 }
 
 /* BUBBLES */
-.bubble{
+/* .bubble{
     padding:12px 16px;
     border-radius:16px;
     max-width:75%;
     font-size:14px;
     line-height:1.5;
+} */
+.bubble {
+    padding:12px 16px;
+    border-radius:18px;
+    max-width:75%;
+    font-size:14px;
+    line-height:1.5;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* USER STYLE */
-.user .bubble{
+/* .user .bubble{
     background:#3f64fa;
     color:white;
     border-bottom-right-radius:4px;
+} */
+.user .bubble {
+    background: linear-gradient(135deg, #4A90E2, #3f64fa);
+    color:white;
+    border-bottom-right-radius:6px;
 }
 
 /* BOT STYLE */
-.bot .bubble{
+/* .bot .bubble{
     background:#ffffff;
     border:1px solid #eee;
     border-bottom-left-radius:4px;
+} */
+.bot .bubble {
+    background:#ffffff;
+    border:1px solid #E3E8EE;
+    border-bottom-left-radius:6px;
 }
 
 /* INPUT */
@@ -114,7 +188,7 @@ button{
 .help button{
     width:100%;
     padding:10px;
-    background:#df2626;
+    background:#f22a2a;
     border:none;
     border-radius:10px;
     color:white;
